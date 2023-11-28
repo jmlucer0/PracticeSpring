@@ -28,10 +28,10 @@ public class Lounge {
     @Lob
     private Blob photo;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="lounge", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<BookedLounge> bookings;
 
-    private Lounge(){
+    public Lounge(){
         this.bookings = new ArrayList<>();
     }
 

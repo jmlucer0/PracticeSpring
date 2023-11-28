@@ -1,4 +1,7 @@
 package com.practice.erent.repository;
 
-public interface LoungeRepository {
+import com.practice.erent.model.Lounge;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LoungeRepository extends JpaRepository<Lounge, Long> {
 }
