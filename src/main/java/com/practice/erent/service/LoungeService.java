@@ -3,6 +3,7 @@ package com.practice.erent.service;
 import com.practice.erent.model.Lounge;
 import com.practice.erent.repository.LoungeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,11 +12,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class LoungeService implements ILoungeService{
 
+    @Autowired
     private final LoungeRepository loungeRepository;
 
     @Override
@@ -29,5 +32,10 @@ public class LoungeService implements ILoungeService{
             lounge.setPhoto(photoBlob);
         }
         return loungeRepository.save(lounge);
+    }
+
+    @Override
+    public List<String> getAllLoungesTypes() {
+        return loungeRepository.findDistinctLoungeTypes();
     }
 }
